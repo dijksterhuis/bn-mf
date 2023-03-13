@@ -1,4 +1,100 @@
 // limits and vanilla/custom trait values
+
+/*
+
+For default Arma 3 traits, see: https://community.bistudio.com/wiki/setUnitTrait
+For default SGD Mike Force traits, search their codebase: https://github.com/Savage-Game-Design/Mike-Force/
+For BN Mike Force custom traits, read the config description below and reference the associated files.
+
+class Example
+{
+    name = "Example Name [Type of Unit]";
+    icon = "\vn\ui_f_vietnam\ui\taskroster\img\logos\Unit_Specific_Image.paa";
+
+    // used to lookup in whitelisting DB, among other things
+    shortname = "Example Name";
+
+    // default Arma asset to load the player as when joining server for first time
+    unit = "vn_b_men_army_01";
+
+    // color of the player on map
+    color = "ColorBlue";
+    colorRGBA[] = {0, 0, 1, 1};
+
+    // number of players that can take a specific role 
+    // a.k.a. 6 menu training selection at duty officer
+    // see defaultTraits (below) for more information on each role
+    class rolelimits 
+    {
+        medic = 40;
+        engineer = 40;
+        explosiveSpecialist = 10;
+        // this should be 0 for all BN servers (see below)
+        vn_artillery = 0;
+    };
+
+    // default characteristics of players when part of this team
+    class defaultTraits
+    {
+        // default Arma trait
+        // how easy/hard it is for AI to see the player.
+        camouflageCoef = 0.8;
+
+        // default Arma trait
+        // how easy/hard it is for AI to hear the player.
+        audibleCoef = 0.6;
+
+        // default Arma trait
+        // stamina penalty for the player.
+        loadCoef = 1;
+
+        // default Arma trait
+        // arma -- can the player repair vehicles.
+        // sgd mf -- condition required for player to build structures.
+        engineer = false;
+
+        // default Arma trait
+        // can the player defuse and mark mines/explosives/traps.
+        explosiveSpecialist = false;
+
+        // default Arma trait
+        // can the player use Medikits on other players and themselves.
+        medic = false;
+
+        // default Arma trait
+        // Ability to hack drones
+        // not used in Mike Force. should be false for all units.
+        UAVHacker = false;
+
+        // SGD MF trait
+        // can the player use the RTO air support module
+        // should be false for all units on BN servers.
+        //
+        // mikeforce -- mission/config/artillery.hpp
+        vn_artillery = false;
+
+        // SGD MF trait
+        // should the player be "harassed" by enemy AI units
+        //
+        // paradigm -- server/functions/harass/fn_harass_create_squads.sqf
+        harassable = true;
+
+        // SGD MF trait
+        // can the player use the scout functionality (6 menu)
+        scout = true;
+
+        // SGD MF trait
+        // are multiple objectives shown when using scout function
+        scout_multiple = false;
+    };
+
+    //Function Calls on team Join
+    onJoin = "";
+    onLeave = "";
+};
+*/
+
+
 class MikeForce
 {
     name = "Mike Force [Infantry]";
