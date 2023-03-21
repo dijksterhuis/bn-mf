@@ -19,9 +19,14 @@ _taskDataStore setVariable ["INIT", {
 
 	_taskDataStore setVariable ["startTime", serverTime];
 
-	["AttackPreparing", ["", ((serverTime + 300) / 60) toFixed 0]] remoteExec ["para_c_fnc_show_notification", 0];
+	["AttackPreparing", ["", ((serverTime + 60) / 60) toFixed 0]] remoteExec ["para_c_fnc_show_notification", 0];
 	[] call vn_mf_fnc_timerOverlay_removeGlobalTimer;
-	["Attack Operation preparation", serverTime + 300, true] call vn_mf_fnc_timerOverlay_setGlobalTimer;
+	["Attack Operation preparation", serverTime + 60, true] call vn_mf_fnc_timerOverlay_setGlobalTimer;
+	// ["AttackPreparing", ["", ((serverTime + 300) / 60) toFixed 0]] remoteExec ["para_c_fnc_show_notification", 0];
+	// [] call vn_mf_fnc_timerOverlay_removeGlobalTimer;
+	// ["Attack Operation preparation", serverTime + 300, true] call vn_mf_fnc_timerOverlay_setGlobalTimer;
+
+	[_zone] call vn_mf_fnc_sites_generate;
 
 	[[
 		["prepare", getMarkerPos "starting_point"]
@@ -41,8 +46,8 @@ _taskDataStore setVariable ["prepare", {
 
 	private _secondsPassed = serverTime - _startTime;
 	private _minutesPassed = _secondsPassed / 60;
-
-	if (_minutesPassed >= 5) exitWith
+	// if (_minutesPassed >= 5) exitWith
+	if (_minutesPassed >= 1) exitWith
 	{
 		_taskDataStore setVariable ["prepared", true];
 		["SUCCEEDED"] call _fnc_finishSubtask;
@@ -59,7 +64,6 @@ _taskDataStore setVariable ["AFTER_STATES_RUN", {
 
 _taskDataStore setVariable ["FINISH", {
 	private _zone = _taskDataStore getVariable "taskMarker";
-	[_zone] call vn_mf_fnc_sites_generate;
 	_taskStore = ["capture_zone", _zone] call vn_mf_fnc_task_create;
 	_zone setMarkerColor "ColorRed";
 	_zone setMarkerBrush "DiagGrid";

@@ -38,6 +38,7 @@ _taskDataStore setVariable ["INIT", {
 	//Set Z position to 0, to make sure attack is to a point on ground level.
 	_attackPos set [2, 0];
 	_taskDataStore setVariable ["attackPos", _attackPos];
+	_taskDataStore setVariable ["holdDuration", 20 * 60];  // 20 minutes
 
 	private _baseRadius = _targetBase getVariable "para_g_base_radius";
 	_taskDataStore setVariable ["attackAreaSize", [_baseRadius, _baseRadius]];
@@ -62,13 +63,14 @@ _taskDataStore setVariable ["prepare_base", {
 	[] call vn_mf_fnc_timerOverlay_removeGlobalTimer;
 
 	//Default to X waves.
-	private _baseMultiplier = 4;
+	// private _baseMultiplier = 4;
+	private _baseMultiplier = 5;
 	//Add a wave for each camp in our origin zone.
 	private _infantryMultiplier = _baseMultiplier;
 
 	private _attackObjective = [
 		_taskDataStore getVariable "attackPos",
-		_taskDataStore getVariable ["attackDifficulty", 2], 
+		_taskDataStore getVariable ["attackDifficulty", 5], 
 		_infantryMultiplier 
 	] call para_s_fnc_ai_obj_request_attack;
 
@@ -83,6 +85,10 @@ _taskDataStore setVariable ["defend_base", {
 	private _attackPos = _taskDataStore getVariable "attackPos";
 	private _areaSize = _taskDataStore getVariable "attackAreaSize";
 	private _areaDescriptor = [_attackPos, _areaSize select 0, _areaSize select 1, 0, false];
+
+	/*
+
+	Don't use the failure condition, just send waves of reinforcements for 20 minutes to make it spicy.
 
 	//Side check - downed players don't count. Nor do players in aircraft. Ground vehicles are fair game.
 	private _alivePlayersInArea = 
@@ -108,9 +114,12 @@ _taskDataStore setVariable ["defend_base", {
 		["FAILED"] call _fnc_finishTask;
 	};
 
+	*/
+
 	private _startTime = _taskDataStore getVariable "startTime";
 
-	//Area has been held long enough, or they've killed enough attackers for the AI objective to complete.
+	//Area has been held long enough
+	
 	if (serverTime - _startTime > (_taskDataStore getVariable ["holdDuration", 1200]) 
 	    || isNull (_taskDataStore getVariable "attackObjective")
 	) then {

@@ -64,12 +64,29 @@ _taskDataStore setVariable ["prepare_zone", {
 	//Add a wave for each camp in our origin zone.
 	private _infantryMultiplier = _baseMultiplier;
 
-	private _attackObjective = [
-		_taskDataStore getVariable "attackPos",
-		//Difficulty 2, unless specified otherwise.
-		_taskDataStore getVariable ["attackDifficulty", 3],
-		_infantryMultiplier
-	] call para_s_fnc_ai_obj_request_attack;
+	// spawn in multiple patrols that move in a circle around the AO,
+	// with a defined radius from the centre point of the AO
+	// being closer to the centre of the AO will be harder for players
+	// as there will be more patrols
+	private _patrol_radii = [50, 100, 225, 350];
+	private _attackObjective = [];
+
+	private _attackObjective = _patrol_radii apply {
+		[
+			"circle", 
+			[_taskDataStore getVariable "attackPos", _x],
+			//Difficulty 2, unless specified otherwise.
+			_taskDataStore getVariable ["attackDifficulty", 3],
+			_infantryMultiplier
+		] call para_s_fnc_ai_obj_request_patrols;
+	};
+
+	// private _attackObjective = [
+	// 	_taskDataStore getVariable "attackPos",
+	// 	//Difficulty 2, unless specified otherwise.
+	// 	_taskDataStore getVariable ["attackDifficulty", 3],
+	// 	_infantryMultiplier
+	// ] call para_s_fnc_ai_obj_request_attack;
 
 	_taskDataStore setVariable ["attackObjective", _attackObjective];
 	_taskDataStore setVariable ["startTime", serverTime];
@@ -117,13 +134,21 @@ _taskDataStore setVariable ["defend_zone", {
 	};
 
 	private _startTime = _taskDataStore getVariable "startTime";
-
 	private _zone = _taskDataStore getVariable "taskMarker";
-	private _garrisonStrength = _taskDataStore getVariable ["attackObjective", objNull] getVariable ["reinforcements_remaining", 0];
-
+	
 	//Zone has been held long enough, or they've killed enough attackers for the AI objective to complete.
-	if (serverTime - _startTime > (_taskDataStore getVariable ["holdDuration", 60 * 30]) ||
-		isNull (_taskDataStore getVariable "attackObjective") ) exitWith 
+	private _time_since_start = serverTime - _startTime > (_taskDataStore getVariable ["holdDuration", 60 * 30]);
+	//private _garrisonStrength = _taskDataStore getVariable ["attackObjective", objNull] getVariable ["reinforcements_remaining", 0];
+	private _garrisonStrength = _taskDataStore getVariable ["attackObjective", []] select { _x getVariable ["reinforcements_remaining", 0] > 0 };
+	private _garrisons_available = count _garrisonStrength;
+
+	diag_log format [
+		"Counterattack: time since start=%1 reinforcements remaining=%2", 
+		_time_since_start, 
+		_garrisons_available
+	];
+
+	if ( _time_since_start || _garrisons_available <= 0) exitWith 
 	{ //exitWith here to prevent a tie causing the zone to turn green but have new tasks for its capture spawn
 		_taskDataStore setVariable ["zoneDefended", true];
 		["SUCCEEDED"] call _fnc_finishSubtask;
@@ -174,5 +199,5 @@ _taskDataStore setVariable ["FINISH", {
 		deleteVehicle _x;
 	} forEach vn_site_objects;
 
-	[_taskDataStore getVariable "attackObjective"] call para_s_fnc_ai_obj_finish_objective;
+	_taskDataStore getVariable "attackObjective" apply {[_x] call para_s_fnc_ai_obj_finish_objective};
 }];
