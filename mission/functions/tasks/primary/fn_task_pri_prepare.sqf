@@ -116,13 +116,6 @@ _taskDataStore setVariable ["AFTER_STATES_RUN", {
 	private _prepared = _taskDataStore getVariable ["prepared", false];
 	private _badPlayer = _taskDataStore getVariable ["badPlayer", false];
 
-	diag_log format [
-		"Prepare AO: After tick: serverTime=%1 prepared=%2 badPlayer=%3",
-		serverTime,
-		_prepared,
-		_badPlayer
-	];
-
 	if (_badPlayer) then {
 		["FAILED"] call _fnc_finishTask;
 	};
@@ -132,6 +125,8 @@ _taskDataStore setVariable ["AFTER_STATES_RUN", {
 }];
 
 _taskDataStore setVariable ["FINISH", {
+	params ["_taskDataStore"];
+	diag_log format ["Prepare AO: Finshed."];
 	private _areaMarkerName = _taskDataStore getVariable "areaMarkerName";
 	deleteMarker _areaMarkerName;
 }];

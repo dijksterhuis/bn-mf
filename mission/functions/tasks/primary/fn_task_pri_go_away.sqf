@@ -100,12 +100,6 @@ _taskDataStore setVariable ["go_away", {
 
 		_taskDataStore setVariable ["playersAreNotInArea", false];
 
-		diag_log format [
-			"Go Away AO: Players inside the AO area: serverTime=%1 players=%2",
-			serverTime,
-			_playersInArea
-		];
-
 		private _hudOverlayParams = [
 			"Leave the area immediately!",
 			serverTime + _pollingDelay,
@@ -126,12 +120,6 @@ _taskDataStore setVariable ["AFTER_STATES_RUN", {
 	// players have left AO's playable area
 	private _playersAreNotInArea = _taskDataStore getVariable ["playersAreNotInArea", false];
 
-	diag_log format [
-		"Prepare AO: After tick: serverTime=%1 notPlayersAreInAO=%2",
-		serverTime,
-		_playersAreNotInArea
-	];
-
 	if (_playersAreNotInArea) then {
 		["SUCCEEDED"] call _fnc_finishTask;
 	};
@@ -139,6 +127,7 @@ _taskDataStore setVariable ["AFTER_STATES_RUN", {
 
 _taskDataStore setVariable ["FINISH", {
 	params ["_taskDataStore"];
+	diag_log format ["Prepare AO: Finished."];
 	private _areaMarkerName = _taskDataStore getVariable "areaMarkerName";
 	deleteMarker _areaMarkerName;
 }];
