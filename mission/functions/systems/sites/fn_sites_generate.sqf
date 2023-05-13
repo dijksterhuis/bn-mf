@@ -238,14 +238,14 @@ The priority is generally determined by either
 
 private _sitesHashMapsArr = [];
 
-_sitesHashMaps pushBack _factoryHashMap;
-_sitesHashMaps pushBack _hqHashMap;
-_sitesHashMaps pushBack _radarHashMap;
-_sitesHashMaps pushBack _artyHashMap;
-_sitesHashMaps pushBack _campHashMap;
-_sitesHashMaps pushBack _aaHashMap;
-_sitesHashMaps pushBack _tunnelHashMap;
-_sitesHashMaps pushBack _waterSupplyHashMap;
+_sitesHashMapsArr pushBack _factoryHashMap;
+_sitesHashMapsArr pushBack _hqHashMap;
+_sitesHashMapsArr pushBack _radarHashMap;
+_sitesHashMapsArr pushBack _artyHashMap;
+_sitesHashMapsArr pushBack _campHashMap;
+_sitesHashMapsArr pushBack _aaHashMap;
+_sitesHashMapsArr pushBack _tunnelHashMap;
+_sitesHashMapsArr pushBack _waterSupplyHashMap;
 
 
 /*
@@ -266,7 +266,7 @@ private _fnc_generate_safe_loc_from_hash_map = {
 		"INFO: Generating new sites: zone=%1 type=%2 n=%3",
 		_zone,
 		_name,
-		_nSites,
+		_nSites
 	];
 
 	for "_i" from 1 to (_nSites) do
@@ -300,7 +300,7 @@ private _fnc_generate_safe_loc_from_hash_map = {
 		"INFO: Generated new sites: zone=%1 type=%2 n=%3",
 		_zone,
 		_name,
-		_nSites,
+		_nSites
 	];
 
 };
