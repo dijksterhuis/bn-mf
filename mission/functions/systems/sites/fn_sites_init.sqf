@@ -15,6 +15,8 @@
     Example(s):
         [] call vn_mf_fnc_sites_init
 */
+vn_mf_s_max_hqs_per_zone = getNumber (missionConfigFile >> "map_config" >> "max_hqs_per_zone");
+vn_mf_s_max_factories_per_zone = getNumber (missionConfigFile >> "map_config" >> "max_factories_per_zone");
 vn_mf_s_max_camps_per_zone = getNumber (missionConfigFile >> "map_config" >> "max_camps_per_zone");
 vn_mf_s_max_aa_per_zone = getNumber (missionConfigFile >> "map_config" >> "max_aa_per_zone");
 vn_mf_s_max_artillery_per_zone = getNumber (missionConfigFile >> "map_config" >> "max_artillery_per_zone");
