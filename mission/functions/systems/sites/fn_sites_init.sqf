@@ -15,16 +15,24 @@
     Example(s):
         [] call vn_mf_fnc_sites_init
 */
-vn_mf_s_max_hqs_per_zone = getNumber (missionConfigFile >> "map_config" >> "max_hqs_per_zone");
-vn_mf_s_max_factories_per_zone = getNumber (missionConfigFile >> "map_config" >> "max_factories_per_zone");
-vn_mf_s_max_camps_per_zone = getNumber (missionConfigFile >> "map_config" >> "max_camps_per_zone");
-vn_mf_s_max_aa_per_zone = getNumber (missionConfigFile >> "map_config" >> "max_aa_per_zone");
-vn_mf_s_max_artillery_per_zone = getNumber (missionConfigFile >> "map_config" >> "max_artillery_per_zone");
-vn_mf_s_max_water_supply_per_zone = getNumber (missionConfigFile >> "map_config" >> "max_water_supply_per_zone");
-vn_mf_s_max_radars_per_zone = getNumber (missionConfigFile >> "map_config" >> "max_radars_per_zone");
-vn_mf_s_max_fortifications_per_zone = getNumber (missionConfigFile >> "map_config" >> "max_fortifications_per_zone");
-vn_mf_s_max_tunnels_per_zone = getNumber (missionConfigFile >> "map_config" >> "max_tunnels_per_zone");
-vn_mf_s_max_vehicle_depots_per_zone = getNumber (missionConfigFile >> "map_config" >> "max_vehicle_depots_per_zone");
+
+private _sitesConfig = missionConfigFile >> "gamemode" >> "sites";
+private _enabledSitesConfigs = "getNumber (_x >> 'maxSites') >= 1" configClasses _sitesConfig;
+
+vn_mf_sites_hashmaps = _enabledSitesConfigs apply {
+
+    diag_log format ["INFO: SitesInit: Loading base site config: %1", configName _x];
+
+    createHashMapFromArray [
+        ["_type", configName _x],
+        ["_maxSites", getNumber (_x >> "maxSites")],
+        ["_waterMode", getNumber (_x >> "waterMode")],
+        ["_siteRadius", getNumber (_x >> "siteRadius")],
+        ["_siteMaxGradient", getNumber (_x >> "siteMaxGradient")],
+        ["_generateCode", getText (_x >> "generateCode")],
+        ["_terrainObjects", getArray (_x >> "terrainObjects")]
+    ]
+};
 
 vn_mf_g_sites_partial_discovery_radius = 300;
 publicVariable "vn_mf_g_sites_partial_discovery_radius";
