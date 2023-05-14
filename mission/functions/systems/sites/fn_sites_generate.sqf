@@ -30,39 +30,21 @@ private _center = markerPos (_zoneData select struct_zone_m_marker);
 // private _sizeX = _size select 0;
 
 /*
-  Create a new zone specific config array for all sites by copying each base 
-  config hashmap to a new non-referenced hashmap and inject the zone specific 
-  information into the new hashmap.
-
-  Now say that three times out loud twice as fast.
+  Generate all the sites from base config hashmaps.
 */
-private _zoneHashMapsArr = vn_mf_sites_hashmaps apply {
+vn_mf_sites_hashmaps apply {
 
-    // de-referenced (deep) copy so we don't accidentally
-    // modify the original base config hashmaps
-	private _siteHashMap = +_x;
+	// TODO: Change to vn_mf_bn_s_zone_radius when PR merged
+	private _zoneRadius = 1000;
 
-	// set zone specific information in new de-referenced site hashmap
-	_siteHashMap set ["_zone", _zone];
-	_siteHashMap set ["_position", _center];
-	_siteHashMap set ["_zoneRadius", 1000];
-	_siteHashMap
-};
-
-/*
-  Generate all the sites from zone specific site hashmaps.
-*/
-_zoneHashMapsArr apply {
-
-	/*
-	  automagically generate private variables from hashmap keys + values
-	  any private variables below this line are probably generated from this
-	  automagic
-	  
-	  https://community.bistudio.com/wiki/HashMap#Automagic_assignation
-	*/
-
-	(values _x) params (keys _x);
+	private _type = _x getOrDefault ["_type", "undefined"];
+	private _maxSites = _x getOrDefault ["_maxSites", 1];
+	private _waterMode = _x getOrDefault ["_waterMode", 0];
+	// TODO: Change to vn_mf_sites_minimum_distance_between_sites once PR merged.
+	private _siteRadius = _x getOrDefault ["_siteRadius", 75];
+	private _siteMaxGradient = _x getOrDefault ["_siteMaxGradient", 5];
+	private _terrainObjects = _x getOrDefault ["_terrainObjects", []];
+	private _generateCode = _x getOrDefault ["_generateCode", ""];
 
 	private _nSites = 1 + ceil random (_maxSites - 1);
 
@@ -76,7 +58,7 @@ _zoneHashMapsArr apply {
 	for "_i" from 1 to (_nSites) do
 	{
 		private _safe_pos = [
-			_position,
+			_center,
 			_zoneRadius,
 			_waterMode,
 			_siteRadius,
