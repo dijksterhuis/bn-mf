@@ -6,8 +6,8 @@ Author: @dijksterhuis
 
 !!! IMPORTANT !!!
 
-* Every config entry is REQUIRED. Nothing is optional. *
-* Setting maxSites = 0 will disable site generation for that site. *
+* Setting `maxSites = 0` will disable site generation. *
+* Removing the `generateCode` field will also disable site generation. *
 * The order of config classes determines the order of site generation. *
 
 Here is the reasoning behind the current order:
