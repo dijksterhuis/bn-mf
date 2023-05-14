@@ -16,7 +16,7 @@
         [] call vn_mf_fnc_sites_init
 */
 
-private _sitesConfig = missionConfigFile >> "gamemode" >> "sites";
+private _sitesConfig = missionConfigFile >> "map_config" >> "sites";
 private _enabledSitesConfigs = "getNumber (_x >> 'maxSites') >= 1" configClasses _sitesConfig;
 
 vn_mf_sites_hashmaps = _enabledSitesConfigs apply {

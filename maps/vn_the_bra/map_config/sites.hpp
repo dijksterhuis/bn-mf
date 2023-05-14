@@ -118,7 +118,7 @@ class radar
 };
 class artillery
 {
-    maxSites = 3;
+    maxSites = 4;
     waterMode = 0;
     siteRadius = 20;
     siteMaxGradient = 10;
@@ -180,7 +180,7 @@ class camp
 };
 class aa
 {
-    maxSites = 10;
+    maxSites = 5;
     waterMode = 0;
     siteRadius = 20;
     siteMaxGradient = 5;
@@ -239,7 +239,7 @@ class tunnel
 };
 class waterSupply
 {
-    maxSites = 3;
+    maxSites = 2;
     waterMode = 2;
     siteRadius = 5;
     siteMaxGradient = 20;

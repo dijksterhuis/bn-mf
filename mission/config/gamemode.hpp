@@ -112,10 +112,6 @@ class gamemode
 	{
 		#include "subconfigs\zoneMarkerTypes.hpp"
 	};
-	class sites
-	{
-		#include "subconfigs\sites.hpp"
-	};
 
 	#include "subconfigs\units.hpp"
 };
