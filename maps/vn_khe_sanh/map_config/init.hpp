@@ -3,5 +3,7 @@ class map_config {
 	class zones {
 		#include "zones.hpp"
 	};
-	#include "sites.hpp"
+	class sites {
+		#include "sites.hpp"
+	};
 };
