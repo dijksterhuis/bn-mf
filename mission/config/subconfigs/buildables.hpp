@@ -1,21 +1,11 @@
+#include "..\ui\icons.inc"
+
 #define CONDITION_HAS_RANK { $STR_vn_mf_buildingMenu_condition_hasRank, "player getVariable ['vn_mf_db_rank',0] >= getNumber(_config >> 'rank')"}
 #define CONDITION_IS_ENGINEER { $STR_vn_mf_buildingMenu_condition_isEngineer, "player getUnitTrait 'engineer'"}
 #define CONDITION_IS_ON_FOOT { $STR_vn_mf_buildingMenu_condition_rnFoot, "isNull objectParent player"}
 #define CONDITION_NOT_IN_RESTRICTED_ZONE { $STR_vn_mf_buildingMenu_condition_inRestrictedZone, "vn_mf_markers_blocked_areas findIf {_pos inArea _x} isEqualTo -1"}
 #define CONDITION_IS_ACAV { $STR_vn_mf_buildingMenu_condition_inACav, "!(player getVariable ['vn_mf_db_player_group', 'MikeForce'] in ['MikeForce', 'GreenHornets', 'SpikeTeam'])"}
 #define CONDITION_IS_DAC_CONG { $STR_vn_mf_buildingMenu_condition_inDacCong, "player getVariable ['vn_mf_db_player_group', 'MikeForce'] isEqualTo 'DacCong'"}
-
-//Icon Classes for Vehicle Spawner
-#define VEHICLE_ICON_BOAT "\vn\ui_f_vietnam\ui\wheelmenu\img\icons\vn_mf_boat_ca.paa"
-#define VEHICLE_ICON_PLANE "\vn\ui_f_vietnam\ui\wheelmenu\img\icons\vn_mf_plane_ca.paa"
-#define VEHICLE_ICON_HELO "\vn\ui_f_vietnam\ui\wheelmenu\img\icons\vn_ico_mf_heli_ca.paa"
-#define VEHICLE_ICON_CAR "\vn\ui_f_vietnam\ui\wheelmenu\img\icons\vn_ico_mf_car_ca.paa"
-#define VEHICLE_ICON_STATIC "\vn\ui_f_vietnam\ui\wheelmenu\img\icons\vn_ico_mf_mg_ca.paa"
-#define VEHICLE_ICON_TANK "\vn\ui_f_vietnam\ui\wheelmenu\img\icons\vn_ico_mf_tank_ca.paa"
-#define VEHICLE_ICON_TRUCK "\vn\ui_f_vietnam\ui\wheelmenu\img\icons\vn_ico_mf_truck_ca.paa"
-#define VEHICLE_ICON_SUPPLY "\vn\ui_f_vietnam\ui\wheelmenu\img\icons\vn_ico_mf_sup_ammo_ca.paa"
-#define VEHICLE_ICON_ARMOUR "\vn\ui_f_vietnam\ui\wheelmenu\img\icons\vn_ico_mf_tank_ca.paa"
-
 
 //Takes "Capacity" in supply units, and "Lifetime" in seconds.
 #define DAYS_TO_SECONDS(days) (days * 86400)
@@ -5305,6 +5295,51 @@ class Land_vn_i_shed_ind_old_f
 						//side = "WEST";
 					};
 				};
+				class mules
+				{
+					icon = VEHICLE_ICON_CAR;
+					name = "STR_vn_mf_vic_mule";
+
+					class vn_b_wheeled_m274_01_01
+					{
+						cost[] = {{"BuildingSupplies", 100}};
+						cooldown = 120;
+						icon = VEHICLE_ICON_CAR;
+						//side = "WEST";
+					};
+
+					class vn_b_wheeled_m274_02_01
+					{
+						cost[] = {{"BuildingSupplies", 100}};
+						cooldown = 120;
+						icon = VEHICLE_ICON_CAR;
+						//side = "WEST";
+					};
+
+					class vn_b_wheeled_m274_mg_02_01
+					{
+						cost[] = {{"BuildingSupplies", 250}};
+						cooldown = 120;
+						icon = VEHICLE_ICON_CAR;
+						//side = "WEST";
+					};
+
+					class vn_b_wheeled_m274_mg_03_01
+					{
+						cost[] = {{"BuildingSupplies", 200}};
+						cooldown = 120;
+						icon = VEHICLE_ICON_CAR;
+						//side = "WEST";
+					};
+
+					class vn_b_wheeled_m274_mg_01_01
+					{
+						cost[] = {{"BuildingSupplies", 200}};
+						cooldown = 120;
+						icon = VEHICLE_ICON_CAR;
+						//side = "WEST";
+					};
+				};
 				class cars
 				{
 					icon = VEHICLE_ICON_CAR;
@@ -5318,7 +5353,7 @@ class Land_vn_i_shed_ind_old_f
 						//side = "WEST";
 					};
 
-					class vn_b_wheeled_m151_02
+					class vn_b_wheeled_lr2a_02_aus_army
 					{
 						cost[] = {{"BuildingSupplies", 250}};
 						cooldown = 120;
@@ -5327,6 +5362,14 @@ class Land_vn_i_shed_ind_old_f
 					};
 
 					class vn_b_wheeled_m151_mg_03
+					{
+						cost[] = {{"BuildingSupplies", 300}};
+						cooldown = 180;
+						icon = VEHICLE_ICON_CAR;
+						//side = "WEST";
+					};
+
+					class vn_b_wheeled_lr2a_mg_02_aus_army
 					{
 						cost[] = {{"BuildingSupplies", 300}};
 						cooldown = 180;
@@ -5350,7 +5393,7 @@ class Land_vn_i_shed_ind_old_f
 						//side = "WEST";
 					};
 
-					class vn_b_wheeled_m151_mg_02
+					class vn_b_wheeled_lr2a_mg_01_aus_army
 					{
 						cost[] = {{"BuildingSupplies", 300}};
 						cooldown = 180;
@@ -5358,7 +5401,7 @@ class Land_vn_i_shed_ind_old_f
 						//side = "WEST";
 					};
 
-					class vn_b_wheeled_m151_mg_06
+					class vn_b_wheeled_lr2a_mg_03_aus_army
 					{
 						cost[] = {{"BuildingSupplies", 500}};
 						cooldown = 300;
@@ -5402,23 +5445,6 @@ class Land_vn_i_shed_ind_old_f
 						icon = VEHICLE_ICON_STATIC;
 						//side = "WEST";
 					};
-
-					class vn_b_sf_static_m60_high
-					{
-						cost[] = {{"BuildingSupplies", 100}};
-						cooldown = 60;
-						icon = VEHICLE_ICON_STATIC;
-						//side = "WEST";
-					};
-
-					class vn_b_sf_static_m60_low
-					{
-						cost[] = {{"BuildingSupplies", 100}};
-						cooldown = 60;
-						icon = VEHICLE_ICON_STATIC;
-						//side = "WEST";
-					};
-
 					class vn_b_sf_static_mk18
 					{
 						cost[] = {{"BuildingSupplies", 300}};
@@ -5439,6 +5465,14 @@ class Land_vn_i_shed_ind_old_f
 					{
 						cost[] = {{"BuildingSupplies", 300}};
 						cooldown = 120;
+						icon = VEHICLE_ICON_STATIC;
+						//side = "WEST";
+					};
+
+					class vn_o_pl_static_at3
+					{
+						cost[] = {{"BuildingSupplies", 100}};
+						cooldown = 60;
 						icon = VEHICLE_ICON_STATIC;
 						//side = "WEST";
 					};
@@ -5503,6 +5537,14 @@ class Land_vn_i_shed_ind_old_f
 
 					class vn_b_armor_m113_acav_06
 					{
+						cost[] = {{"BuildingSupplies", 1500}};
+						cooldown = 900;
+						icon = VEHICLE_ICON_ARMOUR;
+						//side = "WEST";
+					};
+
+					class vn_b_armor_m132_01
+					{
 						cost[] = {{"BuildingSupplies", 2000}};
 						cooldown = 900;
 						icon = VEHICLE_ICON_ARMOUR;
@@ -5511,7 +5553,7 @@ class Land_vn_i_shed_ind_old_f
 				};
 			};
 
-			spawnPositionModelSpace[] = {6.00293,3.26758,-1.91181};
+			spawnPositionModelSpace[] = {6.00293,3.26758,-1.2};
 			spawnDirectionModelSpace = 270;
 		};
 	};
