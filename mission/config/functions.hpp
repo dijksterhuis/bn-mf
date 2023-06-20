@@ -161,6 +161,7 @@ class CfgFunctions
 			class action_gather_intel {};
 			class action_radiotap {};
 			class action_capture_player {};
+			class action_detain_player {};
 			class action_drink_water {};
 			class action_eat_food {};
 		};
@@ -194,6 +195,7 @@ class CfgFunctions
 			file = "functions\systems\dac_cong";
 
 			class capture_player {};
+			class detain_player {};
 		}
 
 		//Gameplay director, responsible for main game progression and flow.
