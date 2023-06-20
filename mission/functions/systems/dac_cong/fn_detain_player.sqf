@@ -34,7 +34,6 @@ if !(isPlayer _target) exitWith {};
 } remoteExec ["call", _target];
 
 private _message = format ["%1 has detained %2!", name _player, name _target];
-private _nearbyCages = nearestObjects [getPos _target, ["Logic"], 10, false];
 
 if(_player getVariable 'vn_mf_side' == east) then {
 	["POWCapturedRed", [_message]] remoteExec ["para_c_fnc_show_notification", allPlayers];
