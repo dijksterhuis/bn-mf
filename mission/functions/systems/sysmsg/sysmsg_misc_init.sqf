@@ -17,9 +17,11 @@
 
 [
     "Be a bro.",
-    "Please mark any mines you place on map in side channel. It's just the right thing to do.",
+    "Be a bro, be like John the GI.",
+    "It is only a game.",
+    "When in doubt, apologize and then move on with your life.",
     "Is Earl AFK again? Does someone need to rescue him?",
-    "Never step off without your Mine Detector ...",
+    "Never step off without your Mine Detector.",
     "ACAV, best Cav.",
-    "Spike Team, best team."
+    "Spike team, best team."
 ]
