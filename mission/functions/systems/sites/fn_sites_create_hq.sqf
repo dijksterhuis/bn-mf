@@ -74,12 +74,6 @@ params ["_pos"];
 
 		private _objectsToDestroy = _hqObjects select {typeOf _x in _objectTypesToDestroy};
 
-		// 2x ai objectives to replace other factory / hq AI that never get freed in task system
-		private _objectives = [
-			[_spawnPos, 1, 1] call para_s_fnc_ai_obj_request_defend,
-			[_spawnPos, 1, 1] call para_s_fnc_ai_obj_request_defend
-		];
-
 		//Create a HQ marker.
 		private _markerPos = _spawnPos getPos [20 + random 30, random 360];
 		private _hqMarker = createMarker [format ["HQ_%1", _siteId], _markerPos];
@@ -96,7 +90,15 @@ params ["_pos"];
 		_respawnObj setVariable ["vn_respawn", [_hqRespawnMarker,_respawnID]];
 
 		vn_dc_adhoc_respawns pushBack [_hqRespawnMarker,_respawnID];
-		_siteStore setVariable ["aiObjectives", _objectives];
+
+		// 10% chance to partially spawn an ambush
+		if (random 1 <= 0.1) then {
+			_siteStore setVariable ["aiObjectives", [[_spawnPos, 1, 1] call para_s_fnc_ai_obj_request_ambush]];
+			_siteStore setVariable ["aiObjectives", [[_spawnPos, 1, 1] call para_s_fnc_ai_obj_request_defend]];
+		} else {
+			_siteStore setVariable ["aiObjectives", [[_spawnPos, 2, 2] call para_s_fnc_ai_obj_request_defend]];
+		};
+
 		_siteStore setVariable ["markers", [_hqMarker]];
 		_siteStore setVariable ["vehicles", _hqObjects]; 
 		_siteStore setVariable ["objectsToDestroy", _objectsToDestroy];

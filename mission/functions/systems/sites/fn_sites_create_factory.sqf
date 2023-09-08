@@ -85,13 +85,14 @@ params ["_pos"];
 	
 		vn_dc_adhoc_respawns pushBack [_factoryRespawnMarker, _respawnID];
 		
-		// 2x ai objectives to replace other factory / hq AI that never get freed in task system
-		private _objectives = [
-			[_spawnPos, 1, 1] call para_s_fnc_ai_obj_request_defend,
-			[_spawnPos, 1, 1] call para_s_fnc_ai_obj_request_defend
-		];
+		// 10% chance to partially spawn an ambush
+		if (random 1 <= 0.1) then {
+			_siteStore setVariable ["aiObjectives", [[_spawnPos, 1, 1] call para_s_fnc_ai_obj_request_ambush]];
+			_siteStore setVariable ["aiObjectives", [[_spawnPos, 1, 1] call para_s_fnc_ai_obj_request_defend]];
+		} else {
+			_siteStore setVariable ["aiObjectives", [[_spawnPos, 2, 2] call para_s_fnc_ai_obj_request_defend]];
+		};
 
-		_siteStore setVariable ["aiObjectives", _objectives];
 		_siteStore setVariable ["markers", [_factoryMarker]];
 		_siteStore setVariable ["staticGuns", _factoryObjects select {_x isKindOf "StaticWeapon"}];
 		_siteStore setVariable ["vehicles", _factoryObjects]; 
