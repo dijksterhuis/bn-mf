@@ -84,3 +84,6 @@ class zone_connector : task
 
 //Tasks to destroy enemy assets
 #include "destroy\tasks.hpp"
+
+//Dynamic tasks that may not always be spawned
+#include "dynamic\tasks.hpp"
