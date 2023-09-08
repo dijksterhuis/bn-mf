@@ -55,7 +55,47 @@ class CfgNotifications
 		color[] = {0.8,0.5,0,1};
 		iconPicture = "\A3\ui_f\data\Map\Markers\Military\warning_ca.paa";
 	};
+	/*
+	==================================
+	tasks/dynamcfn_task_raid_cosvn.sqf
+	*/
+	class CaptureArea
+	{
+		title = $STR_vn_mf_notification_title_cosvn_raid;
+		description = $STR_vn_mf_notification_desc_capture_area;
+		priority = 7;
+		color[] = {0.8,0.5,0,1};
+		iconPicture = "\A3\ui_f\data\Map\Markers\Military\warning_ca.paa";
+	};
+	class HoldArea
+	{
+		title = $STR_vn_mf_notification_title_cosvn_raid;
+		description = $STR_vn_mf_notification_desc_hold_area;
+		priority = 7;
+		color[] = {0.8,0.06,0,1};
+		iconPicture = "\A3\ui_f\data\Map\Markers\Military\warning_ca.paa";
+	};
+	class CaptureHoldSuccess
+	{
+		title = $STR_vn_mf_notification_title_cosvn_raid;
+		description = $STR_vn_mf_notification_desc_raid_success;
+		priority = 7;
+		color[] = {0.7,1,0.3,1};
+		iconPicture = "\A3\ui_f\data\map\mapcontrol\taskIconDone_ca.paa";
+	};
+	class CaptureHoldFailed
+	{
+		title = $STR_vn_mf_notification_title_cosvn_raid;
+		description = $STR_vn_mf_notification_desc_raid_failed;
+		priority = 7;
+		color[] = {0.7,1,0.3,1};
+		iconPicture = "\A3\ui_f\data\map\mapcontrol\taskIconDone_ca.paa";
+	};
 
+	/*
+	==================================
+	*/
+	
 	class NewSupportRequest
 	{
 		title = $STR_vn_mf_notification_title_new_support_request;

@@ -702,6 +702,28 @@
         <Original>Enemy counter-attack is imminent!</Original>
         <English>Enemy counter-attack is imminent!</English>
       </Key>
+
+      <Key ID="STR_vn_mf_notification_title_cosvn_raid">
+        <Original>COSVN Raid</Original>
+        <English>COSVN Raid</English>
+      </Key>
+      <Key ID="STR_vn_mf_notification_desc_capture_area">
+        <Original>Important enemy location is undefended. Go seize control.</Original>
+        <English>important enemy location is undefended. Go seize control.</English>
+      </Key>
+      <Key ID="STR_vn_mf_notification_desc_hold_area">
+        <Original>Enemy forces are counter-attacking. Hold the area at all costs!</Original>
+        <English>Enemy forces are counter-attacking. Hold the area at all costs!</English>
+      </Key>
+      <Key ID="STR_vn_mf_notification_desc_raid_success">
+        <Original>The enemy has been driven away. Good work.</Original>
+        <English>The enemy has been driven away. Good work.</English>
+      </Key>
+      <Key ID="STR_vn_mf_notification_desc_raid_failed">
+        <Original>Failed to hold the point.</Original>
+        <English>Failed to hold the point.</English>
+      </Key>
+
       <Key ID="STR_vn_mf_notification_title_base_attack">
         <Original>FOB Attack</Original>
         <English>FOB Attack</English>
