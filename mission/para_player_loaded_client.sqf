@@ -75,7 +75,4 @@ player enableSimulation false;
 startLoadingScreen ["Welcome to Mike Force!", "MikeForce_loadingScreen"];
 
 // show off graphics team's handy work
-{
-	[_x,5002] call vn_mf_fnc_update_loading_screen;
-	sleep 0.3;
-} forEach (getArray(missionConfigFile >> "gamemode" >> "loadingScreens" >> "images") call BIS_fnc_arrayShuffle);
+[selectRandom (getArray(missionConfigFile >> "gamemode" >> "loadingScreens" >> "images")),5002] call vn_mf_fnc_update_loading_screen;
