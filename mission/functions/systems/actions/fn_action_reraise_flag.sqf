@@ -35,7 +35,7 @@ private _conditionToShow = format [
 private _conditionToProgress = "true";
 
 private _codeOnStart = {
-	allPlayers apply {["BlueforRaisingFlag", []] remoteExec ["para_c_fnc_show_notification", _x]};
+	allPlayers apply {[_x, "BlueforRaisingFlag"] call para_c_fnc_rExec_show_notification};
 };
 private _codeOnTick = {
 	params ["_target", "_caller", "_actionId", "_arguments", "_progress", "_maxProgress"];
@@ -45,7 +45,7 @@ private _codeOnTick = {
 };
 private _codeOnComplete = {
 	cursorObject setVariable ["currentHeight", flagAnimationPhase cursorObject];
-	allPlayers apply {["BlueforRaisedFlag", []] remoteExec ["para_c_fnc_show_notification", _x]};
+	allPlayers apply {[_x, "BlueforRaisedFlag"] call para_c_fnc_rExec_show_notification};
 };
 private _codeOnInterrupted = {
 	cursorObject setVariable ["currentHeight", flagAnimationPhase cursorObject];

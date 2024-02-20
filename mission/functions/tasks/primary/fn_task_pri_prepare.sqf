@@ -155,7 +155,7 @@ _taskDataStore setVariable ["fnc_subtaskGoAway", {
 			true
 		];
 
-		["AttackPreparingFailed", ["Leave the area immediately! Charlie isn't ready!"]] remoteExec ["para_c_fnc_show_notification", 0];
+		[0, "AttackPreparingFailed", ["Leave the area immediately! Charlie isn't ready!"]] call para_c_fnc_rExec_show_notification;
 		[] call vn_mf_fnc_timerOverlay_removeGlobalTimer;
 		_hudOverlayParams call vn_mf_fnc_timerOverlay_setGlobalTimer;
 
@@ -308,7 +308,8 @@ _taskDataStore setVariable ["INIT", {
 
 	/* send notifications about starting the next AO */
 	private _totalTaskDurationSeconds = (_taskDataStore getVariable ["subtaskDurationSeconds", 0]) * 2;
-	["AttackPreparing", [format ["%1", _totalTaskDurationSeconds / 60]]] remoteExec ["para_c_fnc_show_notification", 0];
+
+	[0, "AttackPreparing", [format ["%1", _totalTaskDurationSeconds / 60]]] call para_c_fnc_rExec_show_notification;
 	[] call vn_mf_fnc_timerOverlay_removeGlobalTimer;
 	["Attack Operation preparation", serverTime + _totalTaskDurationSeconds, true] call vn_mf_fnc_timerOverlay_setGlobalTimer;
 

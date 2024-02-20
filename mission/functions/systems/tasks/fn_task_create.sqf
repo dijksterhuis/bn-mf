@@ -128,7 +128,7 @@ if (isClass _taskConfig) then
 		//Explicitly inform players if there's a new support task for their team
 		{
 			if (_taskCategory == "SUP") then {
-				["NewSupportRequest", ["", _formattedTaskName]] remoteExec ["para_c_fnc_show_notification", _x];
+				[_x, "NewSupportRequest", ["", _formattedTaskName]] call para_c_fnc_rExec_show_notification;
 			};
 		} forEach _targetGroups;
 

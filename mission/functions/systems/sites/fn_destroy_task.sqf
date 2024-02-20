@@ -98,7 +98,7 @@ if !(_usedExplosives) exitWith { ["NoExplosives"] call para_c_fnc_show_notificat
 private _nearPlayers = (getPos _task) nearObjects ["Man", 50];
 {
 	if (isPlayer _x) then {
-		["FireInTheHole"] remoteExec ["para_c_fnc_show_notification", _x];
+		[_x, "FireInTheHole"] call para_c_fnc_rExec_show_notification;
 	};
 } forEach _nearPlayers;
 

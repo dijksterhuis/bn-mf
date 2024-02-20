@@ -37,8 +37,8 @@ private _message = format ["%1 has arrested %2!", name _player, name _target];
 
 if(_player getVariable 'vn_mf_side' == east) then {
 	private _cage = selectRandom vn_mf_cages;
-	["POWCapturedRed", [_message]] remoteExec ["para_c_fnc_show_notification", allPlayers];
+	[allPlayers, "POWCapturedRed", [_message]] call para_c_fnc_rExec_show_notification;
 } else {
 	private _cage = selectRandom vn_dc_cages;
-	["POWCapturedBlue", [_message]] remoteExec ["para_c_fnc_show_notification", allPlayers];
+	[allPlayers, "POWCapturedBlue", [_message]] call para_c_fnc_rExec_show_notification;
 };

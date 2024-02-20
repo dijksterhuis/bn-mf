@@ -17,7 +17,7 @@ if (_hitPoint == "incapacitated" && _instigator != objNull && _unit != _instigat
 		} forEach allPlayers;
 
 		diag_log format["[!] Friendly fire name:%1 (UID:%2) incapacitated %3 (UID:%4) with %5",name _instigator, getPlayerUID _instigator, name _unit, getPlayerUID _unit, _projectile];
-		["FriendlyFire", ["Check your fire! You've incapacitated a fellow soldier."]] remoteExec ["para_c_fnc_show_notification", _instigator];
+		[_instigator, "FriendlyFire", ["Check your fire! You've incapacitated a fellow soldier."]] call para_c_fnc_rExec_show_notification;
 	};
 };
 

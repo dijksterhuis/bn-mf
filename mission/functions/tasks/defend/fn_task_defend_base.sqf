@@ -44,7 +44,7 @@ _taskDataStore setVariable ["INIT", {
 
 	if (_prepTime > 0) then 
 	{
-		["BaseAttackPreparing", ["", (_prepTime / 60) toFixed 0]] remoteExec ["para_c_fnc_show_notification", 0];
+		[0, "BaseAttackPreparing", ["", (_prepTime / 60) toFixed 0]] call para_c_fnc_rExec_show_notification;
 		["FOB Attack In", _attackTime, true] call vn_mf_fnc_timerOverlay_setGlobalTimer;
 	};
 
@@ -58,7 +58,7 @@ _taskDataStore setVariable ["prepare_base", {
 
 	if (_taskDataStore getVariable "attackTime" > serverTime) exitWith {};
 
-	["BaseAttackImminent", []] remoteExec ["para_c_fnc_show_notification", 0];
+	[0, "BaseAttackImminent"] call para_c_fnc_rExec_show_notification;
 	[] call vn_mf_fnc_timerOverlay_removeGlobalTimer;
 
 	//Default to X waves.

@@ -31,5 +31,5 @@ if !([_unit1, _role, _vehicle] call vn_mf_fnc_player_can_enter_vehicle) then {
 			};
 		};
 	};
-	["VehicleLockedToTeam"] remoteExec ["para_c_fnc_show_notification", _unit1];
+	[_unit1, "VehicleLockedToTeam"] call para_c_fnc_rExec_show_notification;
 };

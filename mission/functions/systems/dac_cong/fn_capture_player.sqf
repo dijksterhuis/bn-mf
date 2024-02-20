@@ -36,17 +36,17 @@ if !(isPlayer _target) exitWith {};
 private _message = format ["%1 has captured %2!", name _player, name _target];
 private _nearbyCages = nearestObjects [getPos _target, ["Logic"], 10, false];
 if (count _nearbyCages != 0) exitWith {
-	["CagesTooClose", ["Prisoner is already captured!"]] remoteExec ["para_c_fnc_show_notification", _player];
+	[_player, "CagesTooClose", "Prisoner is already captured!"] call para_c_fnc_rExec_show_notification;
 };
 
 if(_player getVariable 'vn_mf_side' == east) then {
 	private _cage = selectRandom vn_mf_cages;
-	["POWCapturedRed", [_message]] remoteExec ["para_c_fnc_show_notification", allPlayers];
+	[allPlayers, "POWCapturedRed", [_message]] call para_c_fnc_rExec_show_notification;
 
 	_target setPosASL _cage;
 } else {
 	private _cage = selectRandom vn_dc_cages;
-	["POWCapturedBlue", [_message]] remoteExec ["para_c_fnc_show_notification", allPlayers];
+	[allPlayers, "POWCapturedBlue", [_message]] call para_c_fnc_rExec_show_notification;
 
 	_target setPosASL _cage;
 };

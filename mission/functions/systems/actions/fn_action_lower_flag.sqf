@@ -34,7 +34,7 @@ private _conditionToShow = format [
 private _conditionToProgress = "true";
 
 private _codeOnStart = {
-	allPlayers apply {["DacCongCapturingFlag", []] remoteExec ["para_c_fnc_show_notification", _x]};
+	allPlayers apply {[_x, "DacCongCapturingFlag"] call para_c_fnc_rExec_show_notification};
 };
 private _codeOnTick = {
 	params ["_target", "_caller", "_actionId", "_arguments", "_progress", "_maxProgress"];
@@ -44,7 +44,7 @@ private _codeOnTick = {
 };
 private _codeOnComplete = {
 	[cursorObject] remoteExec ["deleteVehicle", 2];
-	allPlayers apply {["DacCongCapturedFlag", []] remoteExec ["para_c_fnc_show_notification", _x]};
+	allPlayers apply {[_x, "DacCongCapturedFlag"] call para_c_fnc_rExec_show_notification};
 };
 private _codeOnInterrupted = {
 	cursorObject setVariable ["currentHeight", flagAnimationPhase cursorObject];

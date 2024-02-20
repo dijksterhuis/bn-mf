@@ -29,12 +29,12 @@ private _type = typeOf _vehicle;
 
 if (_vehicle in vn_mf_dc_assets && side _player != east) exitWith
 {
-  ["VehicleLockedToTeamMessage", ["Your team cannot use this kind of vehicle."]] remoteExec ["para_c_fnc_show_notification", _player]; 
+  [_player, "VehicleLockedToTeamMessage", ["Your team cannot use this kind of vehicle."]] call para_c_fnc_rExec_show_notification;
   false 
 };
 
 if (_type == "vn_b_army_static_m101_02" && _playerGroup != "QuarterHorse") exitWith { 
-  ["VehicleLockedToTeamMessage", ["Quarter Horse artillery squadron members only; apply on Discord."]] remoteExec ["para_c_fnc_show_notification", _player]; 
+  [_player, "VehicleLockedToTeamMessage", ["BlackHorse artillery squadron members only; apply on Discord."]] call para_c_fnc_rExec_show_notification;
   false 
 };
 

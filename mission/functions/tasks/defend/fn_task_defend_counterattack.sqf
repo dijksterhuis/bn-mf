@@ -125,7 +125,7 @@ _taskDataStore setVariable ["INIT", {
 
 	if (_prepTime > 0) then 
 	{
-		["CounterAttackPreparing", ["", (_prepTime / 60) toFixed 0]] remoteExec ["para_c_fnc_show_notification", 0];
+		[0, "CounterAttackPreparing", ["", (_prepTime / 60) toFixed 0]] call para_c_fnc_rExec_show_notification;
 		[] call vn_mf_fnc_timerOverlay_removeGlobalTimer;
 		["Counterattack In", _attackTime, true] call vn_mf_fnc_timerOverlay_setGlobalTimer;
 	};
@@ -182,7 +182,7 @@ _taskDataStore setVariable ["prepare_zone", {
 
 	if (_tds getVariable "attackTime" > serverTime) exitWith {};
 
-	["CounterAttackImminent"] remoteExec ["para_c_fnc_show_notification", 0];
+	[0, "CounterAttackImminent"] call para_c_fnc_rExec_show_notification;
 	[] call vn_mf_fnc_timerOverlay_removeGlobalTimer;
 	["Counter Attack Imminent", serverTime + 180, true] call vn_mf_fnc_timerOverlay_setGlobalTimer;
 
@@ -313,7 +313,7 @@ _taskDataStore setVariable ["defend_zone", {
 	private _status = [_tds] call (_tds getVariable "_fnc_check_ai_failure_condition");
 
 	if (_status == "FAILED") exitWith {
-		["CounterAttackExtended"] remoteExec ["para_c_fnc_show_notification", 0];
+		[0, "CounterAttackExtended"] call para_c_fnc_rExec_show_notification;
 		["FAILED"] call _fnc_finishSubtask;
 		["FAILED"] call _fnc_finishTask;
 	};
@@ -335,7 +335,7 @@ _taskDataStore setVariable ["defend_fob", {
 	private _status = [_tds] call (_tds getVariable "_fnc_check_ai_failure_condition");
 
 	if (_status == "FAILED") exitWith {
-		["CounterAttackExtended"] remoteExec ["para_c_fnc_show_notification", 0];
+		[0, "CounterAttackExtended"] call para_c_fnc_rExec_show_notification;
 		["FAILED"] call _fnc_finishSubtask;
 		["FAILED"] call _fnc_finishTask;
 	};
@@ -366,7 +366,7 @@ _taskDataStore setVariable ["defend_flag", {
 	*/
 
 	if (isNull _flag) exitWith {
-		["CounterAttackExtended"] remoteExec ["para_c_fnc_show_notification", 0];
+		[0, "CounterAttackExtended"] call para_c_fnc_rExec_show_notification;
 		["FAILED"] call _fnc_finishSubtask;
 		["FAILED"] call _fnc_finishTask;
 	};

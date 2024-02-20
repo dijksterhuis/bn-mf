@@ -70,7 +70,7 @@ _taskDataStore setVariable ["mount", {
 	_taskDataStore setVariable ["driver", _driver];
 	_taskDataStore setVariable ["origin", getPos _driver];
 
-	["Support_Transport_AllOnboard"] remoteExec ["para_c_fnc_show_notification", _driver];
+	[_driver, "Support_Transport_AllOnboard"] call para_c_fnc_rExec_show_notification;
 
 	private _nextSubtask = if (_taskDataStore getVariable ["destinationPos", []] isEqualTo []) then {
 		["transport"]
@@ -88,7 +88,7 @@ _taskDataStore setVariable ["transport", {
 
 	//if all the players are dead, we failed.
 	if (_playersToTransport isEqualTo []) exitWith {
-		["Support_Transport_PlayersDead"] remoteExec ["para_c_fnc_show_notification", _driver];
+		[_driver, "Support_Transport_PlayersDead"] call para_c_fnc_rExec_show_notification;
 		["FAILED"] call _fnc_finishSubtask;
 		["FAILED"] call _fnc_finishTask;
 	};
@@ -107,9 +107,9 @@ _taskDataStore setVariable ["transport", {
 				["SUCCEEDED"] call _fnc_finishSubtask;
 				["SUCCEEDED", _RPReward] call _fnc_finishTask;
 				//The player won't have the task assigned, so we can't guarantee they'll get a task notification
-				["Support_Transport_Complete"] remoteExec ["para_c_fnc_show_notification", _driver];
+				[_driver, "Support_Transport_Complete"] call para_c_fnc_rExec_show_notification;
 			} else {
-				["Support_Transport_TooClose"] remoteExec ["para_c_fnc_show_notification", _driver];
+				[_driver, "Support_Transport_TooClose"] call para_c_fnc_rExec_show_notification;
 				["CANCELED", [["mount", getPos _driver]]] call _fnc_finishSubtask;
 			};
 		};
@@ -118,10 +118,10 @@ _taskDataStore setVariable ["transport", {
 			["SUCCEEDED"] call _fnc_finishSubtask;
 			["SUCCEEDED", _RPReward] call _fnc_finishTask;
 			//The player won't have the task assigned, so we can't guarantee they'll get a task notification
-			["Support_Transport_Complete"] remoteExec ["para_c_fnc_show_notification", _driver];
+			[_driver, "Support_Transport_Complete"] call para_c_fnc_rExec_show_notification;
 		};
 
-		["Support_Transport_WrongLocation"] remoteExec ["para_c_fnc_show_notification", _driver];
+		[_driver, "Support_Transport_WrongLocation"] call para_c_fnc_rExec_show_notification;
 		["CANCELED", [["mount", getPos _driver]]] call _fnc_finishSubtask;
 	};
 }];
