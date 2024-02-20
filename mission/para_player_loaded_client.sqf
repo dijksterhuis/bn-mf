@@ -51,7 +51,8 @@ _player setVariable ['isArrested', 'false', true];
 private _fnc_disableChatter = {
 	player disableConversation true;
 	[player, "NoVoice"] remoteExec ["setSpeaker", 0];
-	{ _x disableAI "RADIOPROTOCOL"; _x setSpeaker "NoVoice"; } forEach allPlayers;
+	player disableAI "RADIOPROTOCOL";
+	player setSpeaker "NoVoice";
 };
 
 // need to run this now to disable AO radio chatter on first life.
