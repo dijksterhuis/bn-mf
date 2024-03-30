@@ -17,7 +17,7 @@ class vehicles {
 		tags[] = {"ch47", "transport", "helicopter", "7th"};
 	};
 	class vn_b_air_ch47_02_01 {
-		tags[] = {"ch47","armed","transport","helicopter","Dustoff"};
+		tags[] = {"ch47","armed","transport","helicopter","dustoff"};
 	};
 	class vn_b_air_ch47_03_01 {
 		tags[] = {"ch47","armed","transport","helicopter","cargo","army"};
@@ -32,10 +32,10 @@ class vehicles {
 		tags[] = {"oh6a","transport","helicopter"};
 	};
 	class vn_b_air_uh1b_01_03 {
-		tags[] = {"uh1","transport","medical", "helicopter", "Dustoff"};
+		tags[] = {"uh1","transport","medical", "helicopter", "dustoff"};
 	};
 	class vn_b_air_uh1d_01_03 {
-		tags[] = {"uh1","transport","medical", "helicopter", "Dustoff"};
+		tags[] = {"uh1","transport","medical", "helicopter", "dustoff"};
 	};
 	class vn_b_air_uh1e_03_04 {
 		tags[] = {"uh1","armed","transport","helicopter","usmc"};
