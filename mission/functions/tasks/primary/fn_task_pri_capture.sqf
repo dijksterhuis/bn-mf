@@ -146,7 +146,12 @@ _taskDataStore setVariable ["build_respawn", {
 		para_g_max_base_radius
 	];
 
-	if !(_candidates isEqualTo []) then {
+	// need to check if they are a paradigm built object!
+	// otherwise the objective disappears in places like MSS leghorn once FOB is built
+	// the para_s_building_id variable is always set on paradigm built objects
+	private _para_built_candidates = _candidates select {_x getVariable ["para_s_building_id", false] != false};
+
+	if ((count _para_built_candidates) > 0) then {
 		_taskDataStore setVariable ["flag_built", true];
 		["SUCCEEDED"] call _fnc_finishSubtask;
 	};
@@ -161,7 +166,12 @@ _taskDataStore setVariable ["build_flag", {
 		para_g_max_base_radius
 	];
 
-	if !(_candidates isEqualTo []) then {
+	// need to check if they are a paradigm built object!
+	// otherwise the objective disappears in places like MSS leghorn once FOB is built
+	// the para_s_building_id variable is always set on paradigm built objects
+	private _para_built_candidates = _candidates select {_x getVariable ["para_s_building_id", false] != false};
+
+	if ((count _para_built_candidates) > 0) then {
 		_taskDataStore setVariable ["flag_built", true];
 		["SUCCEEDED"] call _fnc_finishSubtask;
 	};
