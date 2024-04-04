@@ -196,10 +196,18 @@ _taskDataStore setVariable ["prepare_zone", {
 		&& (_tds getVariable ["fob_exists", false])
 	) exitWith {
 
+		// nasty network broadcast, but we only do it once.
+
+		vn_mf_bn_dc_flags = [_tds getVariable "flag"];
+		publicVariable "vn_mf_bn_dc_flags";
+
 		// used in the players action to check if players are looking at the right flag.
 		// we set it now so the flag cannot be lowered during the prepare counterattack phase
 		// but can be lowered during the upcoming defned thr flag phase
 		(_tds getVariable "flag") setVariable ["canLower", true];
+
+		vn_mf_bn_defend_the_flag_flags = _tds getVariable "flag";
+		publicVariable "vn_mf_bn_defend_the_flag_flags";
 
 		[_tds] call (_tds getVariable "_fnc_create_circle_area");
 
