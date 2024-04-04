@@ -24,9 +24,24 @@ private _center = markerPos (_zoneData select struct_zone_m_marker);
 private _size = markerSize (_zoneData select struct_zone_m_marker);
 private _sizeX = _size select 0;
 
-//Create zone factory
-private _factoryPosition = [_center, vn_mf_bn_s_zone_radius, 0, 55, 5, _allTerrainObjects] call vn_mf_fnc_sites_get_safe_location;
-[_factoryPosition, _zone] call vn_mf_fnc_sites_create_factory;
+//Create zone weapons cache
+
+/*
+NOTE: we can add more than one of these. just ensure only ONE of the cache sites has the _intel = true argument passed to it
+
+private _factoryPosition = [_center, vn_mf_bn_s_zone_radius, 0, 16, 8, _allTerrainObjects] call vn_mf_fnc_sites_get_safe_location;
+[_factoryPosition, true] call vn_mf_fnc_sites_create_factory;
+
+for "_i" from 1 to (ceil random (vn_mf_s_max_caches_per_zone - 1)) do
+{
+	private _factoryPosition = [_center, vn_mf_bn_s_zone_radius, 0, 16, 8, _allTerrainObjects] call vn_mf_fnc_sites_get_safe_location;
+	[_factoryPosition, false] call vn_mf_fnc_sites_create_factory;
+};
+
+*/
+
+private _factoryPosition = [_center, vn_mf_bn_s_zone_radius, 0, 16, 8, _allTerrainObjects] call vn_mf_fnc_sites_get_safe_location;
+[_factoryPosition, true] call vn_mf_fnc_sites_create_factory;
 
 //Create zone HQ
 private _hqPosition = [_center, vn_mf_bn_s_zone_radius, 0, 55, 5, _allTerrainObjects] call vn_mf_fnc_sites_get_safe_location;
@@ -71,6 +86,7 @@ for "_i" from 1 to (1 + ceil random (vn_mf_s_max_water_supply_per_zone - 1)) do
 	private _tunnelWaterSupply = [_center, vn_mf_bn_s_zone_radius, 2, 5, 20, _unnaturalObjects] call vn_mf_fnc_sites_get_safe_location;
 	[_tunnelWaterSupply, _zone] call vn_mf_fnc_sites_create_water_supply_site;
 };
+
 
 // add the "Tap Radio Comms" hold action to all generated radio sets
 private _radios = vn_site_objects select {

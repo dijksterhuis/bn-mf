@@ -16,7 +16,7 @@
         [markerPos "myHq"] call vn_mf_fnc_sites_create_factory
 */
 
-params ["_pos"];
+params ["_pos", ["_with_intel", false]];
 
 [
 	"factory",
@@ -31,17 +31,78 @@ params ["_pos"];
 
 		missionNamespace getVariable ["current_factory", _siteStore];
 
-		private _factoryObjects = [_spawnPos] call vn_mf_fnc_create_factory_buildings;
-		private _intel = _factoryObjects select {typeOf _x == "Land_Map_unfolded_Malden_F" || typeOf _x == "vn_b_prop_cabinet_02" };
-		missionNamespace setVariable ["factory_intel", _intel];
-		missionNamespace setVariable ["factoryPosition", _pos];
+		private _factoryObjects = [_spawnPos] call vn_mf_fnc_create_cache_buildings;
 
-		_intel call vn_mf_fnc_action_gather_intel;
+		private _intel = _factoryObjects select {typeOf _x == "Land_Map_unfolded_Malden_F" || typeOf _x == "vn_b_prop_cabinet_02"} select 0;
+
 		private _currentVehicles = vehicles;
-
 		vn_site_objects append _factoryObjects;
 
-		private _objectTypesToDestroy = ["Land_vn_wf_vehicle_service_point_east"];
+		//Create a factory marker.
+		private _markerPos = _spawnPos getPos [20 + random 30, random 360];
+		private _factoryMarker = createMarker [format ["factory_%1", _siteId], _markerPos];
+		_factoryMarker setMarkerType "o_Ordnance";
+		_factoryMarker setMarkerText "Cache";
+		_factoryMarker setMarkerAlpha 0;
+
+		private _partialMarkerPos = _spawnPos getPos [10 + random 40, random 360];
+		private _markerPartial = createMarker [format ["PartialFactory_%1", _siteId], _partialMarkerPos];
+		_markerPartial setMarkerType "o_unknown";
+		_markerPartial setMarkerAlpha 0;
+
+		// if has intel object -
+		// - DC can spawn here
+		// - keep the tanks
+		// - keep intel objects and set them up
+		// - doubled AI objectives
+
+		private _objectives = [];
+
+		if (_with_intel) then {
+
+			missionNamespace setVariable ["factory_intel", _intel];
+			missionNamespace setVariable ["factoryPosition", _pos];
+			[_intel] call vn_mf_fnc_action_gather_intel;
+
+			private _factoryRespawnMarker = createMarker [format ["dc_respawn_adhoc_%1", _siteId], _markerPos];
+			_factoryRespawnMarker setMarkerType "o_Ordnance";
+			_factoryRespawnMarker setMarkerAlpha 0;
+			
+			private _respawnID = [east, _factoryRespawnMarker] call BIS_fnc_addRespawnPosition;
+			private _respawnObj = createVehicle ["Land_vn_o_platform_04", _markerPos, [], 5, "NONE"];
+			_respawnObj setVariable ["vn_respawn", [_factoryRespawnMarker, _respawnID]];
+		
+			vn_dc_adhoc_respawns pushBack [_factoryRespawnMarker, _respawnID];
+
+			// 2x ai objectives to replace other factory / hq AI that never get freed in task system
+			_objectives pushBack ([_spawnPos, 1, 1] call para_s_fnc_ai_obj_request_defend);
+			_objectives pushBack ([_spawnPos, 1, 1] call para_s_fnc_ai_obj_request_defend);
+
+		} else {
+
+			deleteVehicle _intel;
+			// zpus are a static weapon AND a land vehicle
+			_factoryObjects select {(_x isKindOf "LandVehicle" && !(_x isKindOf "StaticWeapon")) || typeOf _x == "vn_o_prop_t102e_01"} apply {deleteVehicle _x};
+
+			_objectives pushBack ([_spawnPos, 1, 1] call para_s_fnc_ai_obj_request_defend);
+		};		
+
+
+		private _objectTypesToDestroy = [
+			"Land_vn_pavn_launchers", 
+			"vn_b_ammobox_01", 
+			"Land_vn_pavn_weapons_wide", 
+			"Land_vn_pavn_weapons_cache", 
+			"Land_vn_pavn_ammo", 
+			"Land_vn_pavn_weapons_stack1", 
+			"Land_vn_pavn_weapons_stack2",
+			"Land_vn_pavn_weapons_stack3", 
+			"vn_b_ammobox_full_02", 
+			"vn_o_ammobox_wpn_04", 
+			"vn_o_ammobox_full_03", 
+			"vn_o_ammobox_full_07", 
+			"vn_o_ammobox_full_06"
+		];
 		
 		private _objectTypesForDynamicSim = [
 			"Land_Map_unfolded_Malden_F",
@@ -57,7 +118,7 @@ params ["_pos"];
 		};
 
 		// normalise z-coord and up vector for vehicles, static weapons, weapon creates and the intel associated objects
-		_factoryObjects select {typeOf _x in _objectTypesToDestroy || _x isKindOf "StaticWeapon" || _x isKindOf "LandVehicle"} apply {
+		_factoryObjects select {typeOf _x in _objectTypesToDestroy || [_x] call _fnc_dynSimKindOfChecker} apply {
 			[_x] call vn_mf_fnc_sites_utils_normalise_object_placement;
 		};
 
@@ -77,35 +138,6 @@ params ["_pos"];
 				vn_mf_dc_assets pushBack _x;
 			};
 		};
-
-		//Create a factory marker.
-		private _markerPos = _spawnPos getPos [20 + random 30, random 360];
-		private _factoryMarker = createMarker [format ["factory_%1", _siteId], _markerPos];
-		_factoryMarker setMarkerType "o_Ordnance";
-		_factoryMarker setMarkerText "Factory";
-		_factoryMarker setMarkerAlpha 0;
-
-		private _partialMarkerPos = _spawnPos getPos [10 + random 40, random 360];
-		private _markerPartial = createMarker [format ["PartialFactory_%1", _siteId], _partialMarkerPos];
-		_markerPartial setMarkerType "o_unknown";
-		_markerPartial setMarkerAlpha 0;
-
-		private _factoryRespawnMarker = createMarker [format ["dc_respawn_adhoc_%1", _siteId], _markerPos];
-		_factoryRespawnMarker setMarkerType "o_Ordnance";
-		_factoryRespawnMarker setMarkerAlpha 0;
-		
-		private _respawnID = [east, _factoryRespawnMarker] call BIS_fnc_addRespawnPosition;
-		private _respawnObj = createVehicle ["Land_vn_o_platform_04", _markerPos, [], 5, "NONE"];
-		_respawnObj setVariable ["vn_respawn", [_factoryRespawnMarker, _respawnID]];
-	
-		vn_dc_adhoc_respawns pushBack [_factoryRespawnMarker, _respawnID];
-		
-		// 2x ai objectives to replace other factory / hq AI that never get freed in task system
-		private _objectives = [
-			[_spawnPos, 1, 1] call para_s_fnc_ai_obj_request_defend,
-			[_spawnPos, 1, 1] call para_s_fnc_ai_obj_request_defend
-		];
-
 		_siteStore setVariable ["aiObjectives", _objectives];
 		_siteStore setVariable ["markers", [_factoryMarker]];
 		_siteStore setVariable ["partialMarkers", [_markerPartial]];

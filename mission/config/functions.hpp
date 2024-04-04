@@ -274,6 +274,7 @@ class CfgFunctions
 			class create_camp_buildings {};
 			class create_hq_buildings {};
 			class create_factory_buildings {};
+			class create_cache_buildings {};
 			class create_mortar_buildings {};
 			class create_radar_buildings {};
 			class create_tunnel_buildings {};
