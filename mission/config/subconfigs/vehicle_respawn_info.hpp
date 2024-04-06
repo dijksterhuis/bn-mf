@@ -668,12 +668,6 @@ class vehicles {
 	class vn_o_wheeled_btr40_02 {
 		tags[] = {"btr40","pavn","car"};
 	};
-	class vn_o_wheeled_z157_mg1 {
-		tags[] = {"z157","pavn","car"};
-	};
-	class vn_o_wheeled_z157_mg2 {
-		tags[] = {"z157","pavn","car"};
-	};
 	class vn_o_wheeled_z157_01 {
 		tags[] = {"z157","pavn","car"};
 	};
@@ -747,9 +741,6 @@ class vehicles {
 	};
 
 	//Statics
-	class vn_o_nva_static_rsna_75 {
-		tags[] = {"pavn","static"};
-	};
 	class vn_sa2 {
 		tags[] = {"pavn","static"};
 	};

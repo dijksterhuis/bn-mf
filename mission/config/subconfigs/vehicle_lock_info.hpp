@@ -454,8 +454,6 @@ class vn_o_wheeled_btr40_mg_05 : dac_cong {};
 class vn_o_wheeled_btr40_mg_06 : dac_cong {};
 class vn_o_wheeled_btr40_01 : dac_cong {};
 class vn_o_wheeled_btr40_02 : dac_cong {};
-class vn_o_wheeled_z157_mg1 : dac_cong {};
-class vn_o_wheeled_z157_mg2 : dac_cong {};
 class vn_o_wheeled_z157_01 : dac_cong {};
 class vn_o_wheeled_z157_02 : dac_cong {};
 class vn_o_wheeled_z157_03 : dac_cong {};
@@ -483,7 +481,6 @@ class vn_o_air_mig21_hcas : dac_cong {};
 class vn_o_air_mig21_mr : dac_cong {};
 
 //Statics
-class vn_o_nva_static_rsna_75 : dac_cong {};
 class vn_sa2 : dac_cong {};
 class vn_o_nva_static_zgu1_01 : dac_cong {};
 class vn_o_nva_static_zpu4 : dac_cong {};
