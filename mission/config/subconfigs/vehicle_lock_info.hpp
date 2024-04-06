@@ -134,16 +134,16 @@ class vn_b_armor_m132_01 : armor {};
 
 //M41 Walker bulldog
 class vn_b_armor_m41_01_01 : armor {};
-
+class vn_b_armor_m41_01_02 : usmc {};
 //Type 63 tank
 class vn_i_armor_type63_01 : arvn {};
 
 // M48 Patton
 class vn_b_armor_m48_01_01 : armor {};
-
+class vn_b_armor_m48_01_02 : usmc {};
 // M67 flame tank
 class vn_b_armor_m67_01_01 : armor {};
-
+class vn_b_armor_m67_01_02 : usmc {};
 //Transport trucks
 class vn_b_wheeled_m54_01 : unlocked {};
 class vn_b_wheeled_m54_01_airport : unlocked {};
@@ -274,7 +274,7 @@ class vn_i_air_ch34_01_02 : arvn {};
 class vn_i_air_ch34_02_01 : arvn {};
 class vn_i_air_ch34_02_02 : arvn {};
 //Littlebird
-class C_Heli_Light_01_civil_F : green_hornet {};
+class C_Heli_Light_01_civil_F : dac_cong {};
 class vn_b_air_oh6a_01 : green_hornet {};
 class vn_b_air_oh6a_02 : green_hornet {};
 class vn_b_air_oh6a_03 : green_hornet {};
@@ -312,6 +312,9 @@ class vn_b_air_uh1c_07_04 : usmc {};
 //UH1F - Slick
 class vn_b_air_uh1f_01_03 : usaf {};
 class vn_b_air_uh1c_07_03 : usaf {};
+//UH1 - CIA
+class vn_b_air_uh1b_01_09  : dac_cong {};
+class vn_b_air_uh1d_04_09 : dac_cong {};
 
 //F4 aircraft
 class vn_b_air_f4c_cap : sa {};

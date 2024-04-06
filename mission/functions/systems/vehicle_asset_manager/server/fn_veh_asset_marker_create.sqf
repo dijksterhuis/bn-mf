@@ -45,7 +45,7 @@ private _textGenerator = [
 	}
 ];
 
-private _markerName = format ["marker_%1", _spawnPoint get "id"];
+private _markerName = format ["vehicle_live_marker_%1", _spawnPoint get "id"];
 [_markerName, getPos _vehicle, _textGenerator] call para_g_fnc_create_localized_marker;
 
 _markerName setMarkerType "mil_marker";
