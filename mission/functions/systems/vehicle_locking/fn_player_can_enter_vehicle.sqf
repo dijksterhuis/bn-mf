@@ -33,7 +33,9 @@ if (_role == "driver" || _isCopilot) exitWith {
         true
     };
 
+
     false
+
 };
 
 true
