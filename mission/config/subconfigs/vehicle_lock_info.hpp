@@ -274,7 +274,7 @@ class vn_i_air_ch34_01_02 : arvn {};
 class vn_i_air_ch34_02_01 : arvn {};
 class vn_i_air_ch34_02_02 : arvn {};
 //Littlebird
-class C_Heli_Light_01_civil_F : dac_cong {};
+class B_Heli_Light_01_F : dac_cong {};
 class vn_b_air_oh6a_01 : green_hornet {};
 class vn_b_air_oh6a_02 : green_hornet {};
 class vn_b_air_oh6a_03 : green_hornet {};
