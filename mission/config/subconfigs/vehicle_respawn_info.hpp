@@ -766,15 +766,15 @@ class spawn_point_types {
 			class m151 {
 				name = "M151A1";
 				icon = VEHICLE_ICON_CAR;
-				include[] = { { "m151","transport","army" } };
-				exclude[] = { { "armed","airport","usmc","mp","antitank" } };
+				include[] = { { "m151a1","transport","army" } };
+				exclude[] = { { "armed" } };
 			};
 
 			class mule {
 				name = "M274 Mule";
 				icon = VEHICLE_ICON_CAR;
 				include[] = { { "m274","transport" } };
-				exclude[] = { { "armed","airport" } };
+				exclude[] = { { "airport" } };
 			};
 		};
 	};
@@ -807,14 +807,14 @@ class spawn_point_types {
 				name = "M151A1";
 				icon = VEHICLE_ICON_CAR;
 				include[] = { { "m151a1","armed","army" } };
-				exclude[] = { { "transport","usmc","mp","antitank" } };
+				exclude[] = { { "transport" } };
 			};
 
 			class mule {
 				name = "M274 Mule";
 				icon = VEHICLE_ICON_CAR;
 				include[] = { { "m274", "armed" } };
-				exclude[] = { { "transport", "airport" } };
+				exclude[] = { { "transport" } };
 			};
 		};
 	};
@@ -835,7 +835,7 @@ class spawn_point_types {
 				name = "Trucks";
 				icon = VEHICLE_ICON_TRUCK;
 				include[] = { { "truck", "transport" } };
-				exclude[] = { { "firesupport", "airport" } };
+				exclude[] = { { "airport" } };
 			};
 		};
 	};
@@ -849,7 +849,7 @@ class spawn_point_types {
 				name = "Trucks";
 				icon = VEHICLE_ICON_TRUCK;
 				include[] = { { "truck", "transport" } };
-				exclude[] = { {"firesupport", "airport"} };
+				exclude[] = { {"airport"} };
 			};
 		};
 	};
@@ -883,7 +883,7 @@ class spawn_point_types {
 				name = "M151A1";
 				icon = VEHICLE_ICON_CAR;
 				include[] = { { "m151a1", "armed", "antitank" } };
-				exclude[] = { { "transport","usmc","mp","army" } };
+				exclude[] = { { "transport","usmc","mp","army"} };
 			};
 			class trucks {
 				name = "Trucks";
@@ -891,7 +891,6 @@ class spawn_point_types {
 				include[] = { {"truck", "firesupport" } };
 				exclude[] = { { "pavn" } };
 			};
-
 			class armor {
 				name = "Armor";
 				icon = VEHICLE_ICON_ARMOUR;
