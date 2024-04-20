@@ -37,26 +37,26 @@ class capture_zone : task
 
 	class build_respawn
 	{
-		taskname = "Build FOB Respawn Point";
-		taskdesc = "Build a respawn so we can reinforce the Forward Operating Base.";
+		taskname = "Build FOB Respawn";
+		taskdesc = "Build a respawn so we can reinforce this Forward Operating Base.";
 	};
 
 	class build_landing_pad
 	{
 		taskname = "Build FOB Landing Pad";
-		taskdesc = "Build a landing pad so helos can land near the FOB. Emphasis on near!";
+		taskdesc = "Build a landing pad so helos can land near this FOB. Emphasis on near!";
 	};
 
-	class build_rearm_repair_refuel
+	class build_maintenance
 	{
-		taskname = "Build FOB Rearm/Repair/Refuel Station";
-		taskdesc = "Build a Vehicle Rearm/Repair/Refuel location at the FOB. Possibly next to the helipad.";
+		taskname = "Build FOB Maintenance Station";
+		taskdesc = "Build a Vehicle Rearm, Repair or Refuel location at this FOB. Maybe next to the helipad?";
 	};
 
 	class build_flag
 	{
 		taskname = "Build FOB Flag";
-		taskdesc = "Build a flag to take ownership of this Forward Operating Base.";
+		taskdesc = "Build a flag to take ownership of this FOB.";
 	};
 };
 

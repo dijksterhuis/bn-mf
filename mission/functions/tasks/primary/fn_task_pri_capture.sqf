@@ -134,7 +134,7 @@ _taskDataStore setVariable ["build_fob", {
 			["build_respawn", (_taskDataStore getVariable "fob_position_2d") getPos [50, 0]],
 			["build_flag", (_taskDataStore getVariable "fob_position_2d") getPos [50, 90]],
 			["build_landing_pad", (_taskDataStore getVariable "fob_position_2d") getPos [50, 180]],
-			["build_rearm_resupply", (_taskDataStore getVariable "fob_position_2d") getPos [50, 270]]
+			["build_maintenance", (_taskDataStore getVariable "fob_position_2d") getPos [50, 270]]
 		];
 
                 ["SUCCEEDED", _nextTasks] call _fnc_finishSubtask;
@@ -191,7 +191,7 @@ _taskDataStore setVariable ["build_landing_pad", {
 	};
 }];
 
-_taskDataStore setVariable ["build_rearm_repair_refuel", {
+_taskDataStore setVariable ["build_maintenance", {
 	params ["_tds"];
 
 	private _building_types = [
