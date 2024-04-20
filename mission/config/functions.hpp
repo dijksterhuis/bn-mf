@@ -209,6 +209,7 @@ class CfgFunctions
 			class capture_player {};
 			class ctf_opfor_lower_flag {};
 			class ctf_bluefor_raise_flag {};
+			class ctf_set_flag_height_on_server_join {};
 		}
 
 		//Gameplay director, responsible for main game progression and flow.

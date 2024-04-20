@@ -330,4 +330,8 @@ if hasInterface then
 
 ["InitializePlayer", [player]] call para_c_fnc_dynamicGroups;
 
-
+// if we've just joined the server and the dac cong flag target exists
+// it will be full height for us unless we specifically edit it after server join
+if !(isNil "vn_mf_bn_dc_target_flag") then {
+	[vn_mf_bn_dc_target_flag, player] remoteExec ["vn_mf_fnc_ctf_set_flag_height_on_server_join", 2];
+};
