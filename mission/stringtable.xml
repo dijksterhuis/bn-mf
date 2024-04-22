@@ -204,16 +204,16 @@
         <Original>This vehicle slot can't be used by your team.</Original>
       </Key>
       <Key ID="STR_vn_mf_respawn_mike_force">
-        <Original>PLEIKU - MIKE FORCE</Original>
+        <Original>MIKE FORCE</Original>
       </Key>
       <Key ID="STR_vn_mf_respawn_green_hornets">
-        <Original>PLEIKU - GREEN HORNETS</Original>
+        <Original>GREEN HORNETS</Original>
       </Key>
       <Key ID="STR_vn_mf_respawn_spike_team">
-        <Original>PLEIKU - SPIKE TEAM</Original>
+        <Original>SPIKE TEAM</Original>
       </Key>
       <Key ID="STR_vn_mf_respawn_acav">
-        <Original>PLEIKU - ACAV</Original>
+        <Original>ACAV</Original>
       </Key>
       <Key ID="STR_vn_mf_respawn_mike_force_khe_sanh">
         <Original>KHE SANH SF CAMP - MIKE FORCE</Original>
@@ -252,10 +252,10 @@
         <Original>POW TUNNEL 1</Original>
       </Key>
 	    <Key ID="STR_vn_mf_respawn_satansangels">
-        <Original>CARRIER - SATANS ANGELS</Original>
+        <Original>SATANS ANGELS</Original>
       </Key>
       <Key ID="STR_vn_mf_respawn_satansangels_landhangars">
-        <Original>PLEIKU - SATANS ANGELS</Original>
+        <Original>SATANS ANGELS</Original>
       </Key>
 	    <Key ID="STR_vn_mf_respawn_presscorp">
         <Original>PRESS CORP</Original>
@@ -308,11 +308,17 @@
       <Key ID="STR_vn_mf_light_helicopters">
         <Original>Light Helicopters</Original>
       </Key>
+      <Key ID="STR_vn_mf_motor_pool">
+        <Original>Motor Pool</Original>
+      </Key>
       <Key ID="STR_vn_mf_helicopters">
         <Original>Helicopters</Original>
       </Key>
       <Key ID="STR_vn_mf_cas_helicopters">
-        <Original>CAS Helicopters</Original>
+        <Original>CAS Helicopters (Whitelisted)</Original>
+      </Key>
+      <Key ID="STR_vn_mf_planes_land">
+        <Original>CAS Planes (Whitelisted)</Original>
       </Key>
       <Key ID="STR_vn_mf_wreck_recovery">
         <Original>Wreck Recovery</Original>
@@ -390,7 +396,7 @@
         <Original>RVN Wound Medal</Original>
       </Key>
       <Key ID="STR_vn_mf_supply_drops">
-        <Original>Supply Drops</Original>
+        <Original>Supply Drop</Original>
       </Key>
       <Key ID="STR_vn_mf_distinguished_service_cross">
         <Original>Distinguished Service Cross</Original>
