@@ -20,7 +20,7 @@
 
 
 /* Local function to check player AuthZ */
-private _fnc_get_valid_team_result = {
+private _fnc_player_is_authorized = {
 	params ["_vehicle", "_player"];
 
 	private _teamsVehicleIsLockedTo = _vehicle getVariable ["teamLock", []];
@@ -43,7 +43,7 @@ params ["_player", "_role", "_vehicle"];
 
 /* statics -- only AuthZ'd players */
 if (_vehicle isKindOf "StaticWeapon") exitWith {
-	[_vehicle, _player] call _fnc_get_valid_team_result
+	[_vehicle, _player] call _fnc_player_is_authorized
 };
 
 private _isCopilot = (getNumber ([_vehicle, _vehicle unitTurret _player] call BIS_fnc_turretConfig >> "isCopilot") > 0);
@@ -56,7 +56,7 @@ other vehicles
 */
 
 if (_role == "driver" || _isCoPilot) exitWith {
-	[_vehicle, _player] call _fnc_get_valid_team_result
+	[_vehicle, _player] call _fnc_player_is_authorized
 };
 
 true
