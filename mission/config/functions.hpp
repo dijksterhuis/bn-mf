@@ -357,7 +357,7 @@ class CfgFunctions
 			class tutorial_subsystem_client_init {};
 		};
 
-class system_vehicle_asset_manager_client
+		class system_vehicle_asset_manager_client
 		{
 			file = "functions\systems\vehicle_asset_manager\client";
 			class veh_asset_add_package_underwater_wreck_action_local {};
