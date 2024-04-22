@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=22782;
+		nextID=22886;
 	};
 	class Camera
 	{
-		pos[]={15839.773,57.092567,6797.2729};
-		dir[]={-0.067217499,-0.71883166,0.69194221};
-		up[]={-0.069502451,0.69518113,0.7154693};
-		aside[]={0.99532521,1.0687654e-007,0.096688434};
+		pos[]={16296.748,17.773397,6539.3491};
+		dir[]={0.67143315,-0.37282684,-0.6405338};
+		up[]={0.26979703,0.92788351,-0.25738007};
+		aside[]={-0.69029748,2.613815e-007,-0.72359818};
 	};
 };
 binarizationWanted=0;
@@ -384,8 +384,8 @@ class CustomAttributes
 		name="Multiplayer";
 		class Attribute0
 		{
-			property="SharedObjectives";
-			expression="if (isMultiplayer) then {[_value] spawn bis_fnc_sharedObjectives;};";
+			property="ReviveRequiredItems";
+			expression="false";
 			class Value
 			{
 				class data
@@ -435,8 +435,8 @@ class CustomAttributes
 		};
 		class Attribute4
 		{
-			property="ReviveRequiredItems";
-			expression="false";
+			property="SharedObjectives";
+			expression="if (isMultiplayer) then {[_value] spawn bis_fnc_sharedObjectives;};";
 			class Value
 			{
 				class data
@@ -22518,8 +22518,8 @@ class Mission
 							dataType="Object";
 							class PositionInfo
 							{
-								position[]={16199.423,18.849823,7545.6924};
-								angles[]={0.0011471116,2.5598137,0.0058930819};
+								position[]={16199.567,18.96055,7545.8037};
+								angles[]={6.2793498,6.2021637,6.2785668};
 							};
 							side="Empty";
 							flags=4;
@@ -22528,7 +22528,7 @@ class Mission
 							};
 							id=18073;
 							type="vn_b_ammobox_full_15";
-							atlOffset=0.0012187958;
+							atlOffset=0.042247772;
 							class CustomAttributes
 							{
 								class Attribute0
@@ -22730,7 +22730,7 @@ class Mission
 						};
 					};
 					id=18322;
-					atlOffset=40.182327;
+					atlOffset=40.182545;
 				};
 				class Item6
 				{
@@ -23827,7 +23827,7 @@ class Mission
 							name="areamarker_planes_land";
 							text="@STR_vn_mf_planes_land";
 							type="b_plane";
-							angle=179.56895;
+							angle=179.56894;
 							id=8167;
 						};
 						class Item41
@@ -25498,8 +25498,8 @@ class Mission
 							dataType="Object";
 							class PositionInfo
 							{
-								position[]={15893.094,15.19021,6839.7168};
-								angles[]={0.0060039326,3.9383702,0};
+								position[]={15893.237,15.258793,6838.3145};
+								angles[]={6.2789922,1.5943785,0.0042969352};
 							};
 							side="Empty";
 							flags=4;
@@ -25508,7 +25508,7 @@ class Mission
 							};
 							id=17914;
 							type="vn_b_ammobox_full_15";
-							atlOffset=9.5367432e-007;
+							atlOffset=0.068586349;
 							class CustomAttributes
 							{
 								class Attribute0
@@ -25638,7 +25638,7 @@ class Mission
 						};
 					};
 					id=18324;
-					atlOffset=0.012546539;
+					atlOffset=0.013082504;
 				};
 				class Item8
 				{
@@ -29843,7 +29843,7 @@ class Mission
 							};
 							id=6237;
 							type="Land_vn_radio";
-							atlOffset=0.67380333;
+							atlOffset=0.73317242;
 						};
 						class Item12
 						{
@@ -30161,8 +30161,8 @@ class Mission
 							dataType="Object";
 							class PositionInfo
 							{
-								position[]={16308.177,14.98003,6532.9531};
-								angles[]={0,1.523621,0};
+								position[]={16309.549,15.539766,6553.9385};
+								angles[]={0,3.1608844,-0};
 							};
 							side="Empty";
 							flags=4;
@@ -30171,6 +30171,7 @@ class Mission
 							};
 							id=16116;
 							type="vn_b_ammobox_full_01";
+							atlOffset=0.023298264;
 							class CustomAttributes
 							{
 								class Attribute0
@@ -30194,8 +30195,8 @@ class Mission
 							dataType="Object";
 							class PositionInfo
 							{
-								position[]={16306.949,14.98003,6532.9253};
-								angles[]={0,1.5354606,0};
+								position[]={16309.793,15.531704,6545.4038};
+								angles[]={0,3.112366,-0};
 							};
 							side="Empty";
 							flags=4;
@@ -30204,6 +30205,7 @@ class Mission
 							};
 							id=16117;
 							type="vn_b_ammobox_full_01";
+							atlOffset=0.015242577;
 							class CustomAttributes
 							{
 								class Attribute0
@@ -31249,7 +31251,7 @@ class Mission
 						};
 					};
 					id=18327;
-					atlOffset=1.6409912;
+					atlOffset=6.5639648;
 				};
 				class Item11
 				{
@@ -35485,7 +35487,7 @@ class Mission
 				};
 			};
 			id=18339;
-			atlOffset=1.7196941;
+			atlOffset=1.7581558;
 		};
 		class Item298
 		{
