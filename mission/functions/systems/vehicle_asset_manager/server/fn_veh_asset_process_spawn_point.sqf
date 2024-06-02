@@ -161,8 +161,7 @@ if (_doMarkerUpdate && !((_spawnPoint get "status" get "state") in ["RESPAWNING"
 
 //Check if a vehicle should be respawned
 if (
-	(_spawnPoint get "status" get "state") in ["RESPAWNING", "REPAIRING"] && 
-	{(_spawnPoint get "status" getOrDefault ["finishesAt", 0]) < serverTime}
+	(_spawnPoint get "status" get "state") in ["RESPAWNING", "REPAIRING"]
 ) then {
 	vn_mf_spawn_points_to_respawn pushBackUnique (_spawnPoint get "id");
 };

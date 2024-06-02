@@ -15,7 +15,13 @@
 
 if (vn_mf_spawn_points_to_respawn isEqualTo []) exitWith {};
 
-private _spawnPointId = vn_mf_spawn_points_to_respawn deleteAt 0;
+private _next = vn_mf_spawn_points_to_respawn findIf {
+	vn_mf_veh_asset_spawn_points get _x get "status" getOrDefault ["finishesAt", 0] < serverTime
+};
+
+if (_next == -1) exitWith {};
+
+private _spawnPointId = vn_mf_spawn_points_to_respawn deleteAt _next;
 private _spawnPoint = vn_mf_veh_asset_spawn_points get _spawnPointId;
 
 // @dijksterhuis: Set the key up that we'll use to track any duplicate respawn requests
