@@ -88,10 +88,12 @@ class gamemode
 	{
 		#include "subconfigs\rehandler.hpp"
 	};
+	/*
 	class vehicle_respawn_info
 	{
 		#include "subconfigs\vehicle_respawn_info.hpp"
 	};
+	*/
 	class teleporters
 	{
 		#include "subconfigs\teleporters.hpp"

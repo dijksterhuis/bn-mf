@@ -12,4 +12,7 @@ class map_config {
 	class zones {
 		#include "zones.hpp"
 	};
+        class vehicle_spawners {
+                #include "vehicle_respawn_info.hpp"
+        };
 };
