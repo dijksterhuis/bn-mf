@@ -332,3 +332,37 @@ if hasInterface then
 ["InitializePlayer", [player]] call para_c_fnc_dynamicGroups;
 
 
+// hack a mini stamina buff
+addMissionEventHandler ["EachFrame", {
+	if (diag_frameNo mod 15 isEqualTo 0) then {
+		private _fnc_setStam = {
+			params ["_stamMod"];
+			player setFatigue (0 max (getFatigue player - _stamMod));
+		};
+
+		if (weaponLowered player) then {
+
+			switch (true) do {
+				case ((surfaceType getPos player) in ["#CLN_GrassTall", "#GdtRock"]) : {
+					[0.0075] call _fnc_setStam;
+				};
+				case ((surfaceType getPos player) isEqualTo "#CLN_Forest") : {
+					[0.005] call _fnc_setStam;
+				};
+				case (surfaceIsWater position player) : {
+					[0.001] call _fnc_setStam;
+				};
+				default {
+					[0.01] call _fnc_setStam;
+				};
+			};
+		};
+
+		switch (true) do {
+			case (stance player == "PRONE") : {player setCustomAimCoef 0.5};
+			case (stance player == "CROUCH") : {player setCustomAimCoef 0.9};
+			case (stance player == "STAND") : {player setCustomAimCoef 1.6};
+			default {player setCustomAimCoef 1};
+		};
+	};
+}];
