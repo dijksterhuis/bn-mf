@@ -20,3 +20,6 @@ private _performanceLoggingPeriod = localNamespace getVariable ["vn_mf_performan
 
 ["performance_logging", vn_mf_fnc_log_performance_data, [], _performanceLoggingPeriod] call para_g_fnc_scheduler_add_job;
 ["ai_objective_logging", vn_mf_fnc_log_ai_objective_data, [], _performanceLoggingPeriod] call para_g_fnc_scheduler_add_job;
+["groupowner_logging", vn_mf_fnc_log_group_owner_data, [], _performanceLoggingPeriod] call para_g_fnc_scheduler_add_job;
+
+

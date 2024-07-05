@@ -27,6 +27,7 @@ class CfgFunctions
 			class player_within_radius {};
 			class check_side {};
 			class range {};
+			class get_circle_crosssection_positions {};
 		};
 
 		class core_init
@@ -90,6 +91,7 @@ class CfgFunctions
 			class init_performance_logging {};
 			class log_performance_data {};
 			class log_ai_objective_data {};
+			class log_group_owner_data {};
 		};
 
 		class ui
