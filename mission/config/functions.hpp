@@ -41,7 +41,8 @@ class CfgFunctions
 				postinit = 1;
 			};
 
-			class curator_init {};
+			class curator_init_client {};
+			class curator_init_server_assign {};
 			class chat_init {};
 			class adv_revive_params {};
 			class init_mission_handlers {};
