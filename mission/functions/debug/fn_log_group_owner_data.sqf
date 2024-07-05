@@ -26,4 +26,15 @@ allGroups apply {
 	_owners set [groupOwner _x, [_x] + (_owners getOrDefault [groupOwner _x, []])];
 };
 
-{["INFO", format ["Group owners: ownerMachineNetId=%1 count=%2", _x, count _y]] call para_g_fnc_log} forEach _owners;
+{
+	if ((count _y) > 1) then {
+		[
+			"INFO",
+			format [
+				"Group owners (non-players group count only): ownerMachineNetId=%1 count=%2",
+				_x,
+				count _y
+			]
+		] call para_g_fnc_log;
+	};
+} forEach _owners;
